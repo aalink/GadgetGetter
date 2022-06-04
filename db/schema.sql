@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS devices_db;
+CREATE DATABASE devices_db;
