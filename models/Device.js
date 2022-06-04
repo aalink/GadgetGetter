@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Device extends Model {}
 
-Project.init(
+Device.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -35,7 +35,7 @@ Project.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'device',
   }
 );
 
