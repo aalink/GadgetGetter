@@ -1,0 +1,21 @@
+<!-- Loop over each object in the devices array -->
+{{#each devices as |device| }}
+<div class="row mb-4 device">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/device/{{device.id}}">{{device.name}}</a>
+    </h2>
+    <p>
+
+    </p>
+    <p>Device Type: {{device.device_type}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{device.description}}
+    </p>
+  </div>
+</div>
+{{/each}}

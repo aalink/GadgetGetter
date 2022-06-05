@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+
+<div class="col-md-2 bg-light">
+<h4>Information</h4>
+</div>
+
+  <div class="col-md-4">
+    <h3>Add a New Device:</h3>
+
+    <form class="form new-device-form">
+      <div class="form-group">
+        <label for="device-name">Device Name:</label>
+        <input class="form-input" type="text" id="device-name" name="device-name" />
+      </div>
+      <div class="form-group">
+        <label for="device-type">Device Type:</label>
+        <input class="form-input" type="number" id="device-type" name="device-type" />
+      </div>
+      <div class="form-group">
+        <label for="device-serial-number">Serial Number:</label>
+        <label class="form-input" type="text" id="device-serial-number" name="device-serial-number"></label>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if devices.length}}
+  <div class="col-md-6 device-list">
+    <h3>Current Devices:</h3>
+
+    {{#each devices as |device|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/device/{{device.id}}">{{device.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{device.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>
