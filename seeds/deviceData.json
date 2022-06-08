@@ -3,24 +3,77 @@
     "name": "iPhone",
     "device_type": "Smart Phone",
     "device_serial_number": 1000,
-    "is_available": true    
+    "is_available": true,
+    "user_id": null   
   },
   {
     "name": "iPad",
     "device_type": "Tablet",
     "device_serial_number": 1001,
-    "is_available": true    
+    "is_available": true,
+    "user_id": null    
   },
   {
     "name": "MacBook Pro",
     "device_type": "Computer",
     "device_serial_number": 1002,
-    "is_available": true    
+    "is_available": false,
+    "user_id": 8
   },
   {
     "name": "Apple TV",
     "device_type": "Media Player",
     "device_serial_number": 1003,
-    "is_available": true    
+    "is_available": true,
+    "user_id": null    
+  },
+  {
+    "name": "MacBook Air",
+    "device_type": "Computer",
+    "device_serial_number": 1004,
+    "is_available": false,
+    "user_id": 1
+  },
+  {
+    "name": "Kindle",
+    "device_type": "eBook Reader",
+    "device_serial_number": 1005,
+    "is_available": false,
+    "user_id": 2
+  },
+  {
+    "name": "Kindle Fire HD10",
+    "device_type": "Tablet",
+    "device_serial_number": 1006,
+    "is_available": false,
+    "user_id": 3
+  },
+  {
+    "name": "Kindle Fire HD10",
+    "device_type": "Tablet",
+    "device_serial_number": 1007,
+    "is_available": false,
+    "user_id": 3
+  },
+  {
+    "name": "Samsung Galaxy Tab S6",
+    "device_type": "Tablet",
+    "device_serial_number": 1008,
+    "is_available": false,
+    "user_id": 5
+  },
+  {
+    "name": "Microsoft Surface Laptop Go 2",
+    "device_type": "Computer",
+    "device_serial_number": 1009,
+    "is_available": false,
+    "user_id": 6
+  },
+  {
+    "name": "Microsoft Surface Pro",
+    "device_type": "Tablet",
+    "device_serial_number": 1010,
+    "is_available": false,
+    "user_id": 7
   }
 ]

@@ -1,22 +1,72 @@
 [
   {
+    "id": 1,
     "name": "Aaron",
     "email": "test1@email.com",
-    "password": "password12345"
+    "password": "password12345",
+    "type": "IT admin"
   },
   {
+    "id": 2,
     "name": "Jessie",
     "email": "test2@email.com",
-    "password": "password12345"
+    "password": "password12345",
+    "type": "student"
   },
   {
+    "id": 3,
     "name": "Raul",
     "email": "test3@email.com",
-    "password": "password12345"
+    "password": "password12345",
+    "type": "teacher"
   },
   {
+    "id": 4,
     "name": "James",
     "email": "test4@email.com",
-    "password": "password12345"
+    "password": "password12345",
+    "type": "student"
+  },
+  {
+    "id": 5,
+    "name": "Jon",
+    "email": "test5@email.com",
+    "password": "password12345",
+    "type": "teacher"
+  },
+  {
+    "id": 6,
+    "name": "Bran",
+    "email": "test6@email.com",
+    "password": "password12345",
+    "type": "IT admin"
+  },
+  {
+    "id": 7,
+    "name": "Tyrion",
+    "email": "test7@email.com",
+    "password": "password12345",
+    "type": "teacher"
+  },
+  {
+    "id": 8,
+    "name": "Cersei",
+    "email": "test8@email.com",
+    "password": "password12345",
+    "type": "teacher"
+  },
+  {
+    "id": 9,
+    "name": "Dany",
+    "email": "test9@email.com",
+    "password": "password12345",
+    "type": "student"
+  },
+  {
+    "id": 10,
+    "name": "Arya",
+    "email": "test10@email.com",
+    "password": "password12345",
+    "type": "student"
   }
 ]
