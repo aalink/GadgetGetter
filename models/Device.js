@@ -22,6 +22,10 @@ Device.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    is_available: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
