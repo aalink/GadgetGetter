@@ -2,6 +2,27 @@ const router = require('express').Router();
 const { Device } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+router.get("/", (req, res) => {
+  // find all devices
+  // be sure to include its associated data
+  Device.findAll({})
+    .then((devices) => res.json(devices))
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get("/:id", (req, res) => {
+  // find a single device by its `id`
+  Device.findByPk(req.params.id, {})
+    .then((device) => res.json(device))
+    .catch((err) => res.status(400).json(err));
+});
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newDevice = await Device.create({

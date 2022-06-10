@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     const deviceData = await Device.findAll({
       include: [
         {
-          model: User,
+          model: Device,
           attributes: ['name'],
         },
       ],
