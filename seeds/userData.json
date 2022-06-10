@@ -2,30 +2,30 @@
   {
     "id": 1,
     "name": "Aaron",
-    "email": "test1@email.com",
-    "password": "password12345",
-    "type": "IT admin"
+    "email": "a@b.com",
+    "password": "",
+    "type": "admin"
   },
   {
     "id": 2,
     "name": "Jessie",
-    "email": "test2@email.com",
-    "password": "password12345",
-    "type": "student"
+    "email": "b@b.com",
+    "password": "",
+    "type": "admin"
   },
   {
     "id": 3,
     "name": "Raul",
-    "email": "test3@email.com",
-    "password": "password12345",
-    "type": "teacher"
+    "email": "c@b.com",
+    "password": "",
+    "type": "admin"
   },
   {
     "id": 4,
     "name": "James",
-    "email": "test4@email.com",
+    "email": "d@b.com",
     "password": "password12345",
-    "type": "student"
+    "type": "admin"
   },
   {
     "id": 5,

@@ -4,24 +4,22 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
+    if (!req.session.loggedIn) {
+      res.redirect('/login');
+      return;
+    }
     // Get all devices and JOIN with user data
-    const deviceData = await Device.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const deviceData = await Device.findAll();
 
     // Serialize data so the template can read it
     const devices = deviceData.map((device) => device.get({ plain: true }));
-
+    res.status(200).json(devices);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       devices, 
       logged_in: req.session.logged_in 
     });
+    res.redirect('/profile');
   } catch (err) {
     res.status(500).json(err);
   }

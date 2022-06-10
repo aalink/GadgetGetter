@@ -38,6 +38,10 @@ User.init(
     type: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    signedUp: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     }
   },
   {
