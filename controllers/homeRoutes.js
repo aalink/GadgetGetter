@@ -2,14 +2,14 @@ const router = require('express').Router();
 const { Device, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try{
     // Get all devices and JOIN with user data
     const deviceData = await Device.findAll({});
 
     // Serialize data so the template can read it
     const devices = deviceData.map((device) => device.get({ plain: true }));
-    res.status(200).json(devices);
+    // res.status(200).json(devices);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       devices, 
