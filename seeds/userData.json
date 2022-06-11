@@ -3,21 +3,21 @@
     "id": 1,
     "name": "Aaron",
     "email": "a@b.com",
-    "password": "",
+    "password": "12345678",
     "type": "admin"
   },
   {
     "id": 2,
     "name": "Jessie",
     "email": "b@b.com",
-    "password": "",
+    "password": "12345678",
     "type": "admin"
   },
   {
     "id": 3,
     "name": "Raul",
     "email": "c@b.com",
-    "password": "",
+    "password": "12345678",
     "type": "admin"
   },
   {
