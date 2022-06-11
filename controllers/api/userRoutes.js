@@ -1,7 +1,30 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.get('/signup/:id', async (req, res) => {
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+router.get("/", (req, res) => {
+  // find all users
+  // be sure to include its associated data
+  User.findAll({})
+    .then((users) => res.json(users))
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get("/:id", (req, res) => {
+  // find a single user by its `id`
+  User.findByPk(req.params.id, {})
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json(err));
+});
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+
+router.post('/', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { id: req.params.id } });
     const user = userData.get({ plain: true });
