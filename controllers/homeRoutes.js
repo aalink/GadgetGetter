@@ -5,14 +5,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     // Get all devices and JOIN with user data
-    const deviceData = await Device.findAll({
-      include: [
-        {
-          model: Device,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const deviceData = await Device.findAll({});
 
     // Serialize data so the template can read it
     const devices = deviceData.map((device) => device.get({ plain: true }));
