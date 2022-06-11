@@ -26,7 +26,29 @@ router.get("/:id", (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.findOne({ where: { id: req.params.id } });
+    const user = userData.get({ plain: true });
+    if (!user) {
+      res
+        .status(404)
+        .json({ message: 'ID not found, please try again' });
+      return;
+    }
+    if (user.signedUp){
+      res.status(400).json({ message: 'User already signed up, Log in' });
+      return;
+    }
+      console.log(user);
+      res.render('sign-up', {user} );
+    } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// Sign Up of a new user (available for users and admins)
+router.put('/', async (req, res) => {
+  try {
+    const userData = await User.update(req.body, { where: { id: req.body.id } });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -34,6 +56,15 @@ router.post('/', async (req, res) => {
 
       res.status(200).json(userData);
     });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+// Adding a new user to the db (available only for admins)
+router.post('/add', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+    res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
   }

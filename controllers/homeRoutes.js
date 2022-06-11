@@ -2,19 +2,20 @@ const router = require('express').Router();
 const { Device, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
-  try {
+router.get('/', withAuth, async (req, res) => {
+  try{
     // Get all devices and JOIN with user data
     const deviceData = await Device.findAll({});
 
     // Serialize data so the template can read it
     const devices = deviceData.map((device) => device.get({ plain: true }));
-
+    res.status(200).json(devices);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       devices, 
       logged_in: req.session.logged_in 
     });
+    // res.redirect('/profile');
   } catch (err) {
     res.status(500).json(err);
   }
@@ -35,6 +36,7 @@ router.get('/device/:id', async (req, res) => {
 
     res.render('device', {
       ...device,
+
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -72,4 +74,13 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// router.get('/signup', (req, res) => {
+//   // If the user is already logged in, redirect the request to another route
+//   if (req.session.logged_in) {
+//     res.redirect('/');
+//     return;
+//   }
+
+//   res.render('sign-up');
+// });
 module.exports = router;

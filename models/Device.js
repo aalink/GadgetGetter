@@ -26,7 +26,7 @@ Device.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    user_id: {
+    user_id: { 
       type: DataTypes.INTEGER,
       references: {
         model: 'user',

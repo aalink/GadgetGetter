@@ -38,6 +38,10 @@ User.init(
     type: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    isSignedUp: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     }
   },
   {
@@ -46,10 +50,16 @@ User.init(
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      },
+      beforeUpdate: async (updateUserData) => {
+        try{
+        console.log('passwordBefore',updateUserData.password);
+        updateUserData.password = await bcrypt.hash(updateUserData.password, 10);
+        console.log('passwordAfter',updateUserData.password);
+        return updateUserData;
+        } catch (error){
+          console.log(error);
+        }   
+  },
     },
     sequelize,
     timestamps: false,
