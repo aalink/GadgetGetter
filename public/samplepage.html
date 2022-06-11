@@ -1,168 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gadget Getter</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Babylonica&family=Fascinate&family=Pacifico&family=Permanent+Marker&family=Poppins:ital,wght@0,200;0,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gadget Getter</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
-
-<body>
-  <!-- Header and Sidebar -->
-  <header>
-    <h1>GadgetGetter</h1>
-  </header>
-  <!-- this is the grid container that we're exploring. -->
-  <div class="flex-row align-items-start">
-    <div class="d-flex">
-
-      <!-- ⬇️////////////// SIDEBAR //////////////⬇️ -->
-      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <svg class="bi pe-none me-2" width="40" height="32">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-          <span class="fs-4">Menu</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-              <svg class="bi pe-none me-2" width="16" height="16">
-                <use xlink:href="#home"></use>
-              </svg>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16">
-                <use xlink:href="#speedometer2"></use>
-              </svg>
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16">
-                <use xlink:href="#table"></use>
-              </svg>
-              Login
-            </a>
-          </li>
-
-          <li class="dropdown">
-            <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <svg class="bi pe-none me-2" width="16" height="16">
-                <use xlink:href="#grid"></use>
-              </svg>
-              Devices
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="#">Show All</a></li>
-              <li><a class="dropdown-item" href="#">Show Available Only</a></li>
-              <li><a class="dropdown-item" href="#">Show Types</a></li>
-            </ul>
-          </li>
-
-          <li class="dropdown">
-            <a href="#" class="nav-link text-white dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <svg class="bi pe-none me-2" width="16" height="16">
-                <use xlink:href="#grid"></use>
-              </svg>
-              Users
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="#">Show All</a></li>
-              <li><a class="dropdown-item" href="#">IT admins</a></li>
-              <li><a class="dropdown-item" href="#">Teachers</a></li>
-              <li><a class="dropdown-item" href="#">Students</a></li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="#" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16">
-                <use xlink:href="#grid"></use>
-              </svg>
-              Logout
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- ⬆️////////////// SIDEBAR //////////////⬆️ -->
-
-
-
-      <!-- device cards -->
-
-      <!-- this could be a handlebar partial -->
-      <div class="container">
-        <div class="d-flex flex-row flex-wrap">
-          <div class="card" style="width: 12rem;">
-            <img src="images/iPad.jpeg" class="card-img-top" alt="deviceImage">
-            <div class="card-body">
-              <h5 class="card-title">iPad</h5>
-              <p class="card-text">Type: tablet</p>
-              <a href="#" class="btn btn-primary">Rent this</a>
-            </div>
+  <body>
+    <!-- Header-->
+    <div class="headerCarousel">
+      <header>
+        <h1>GadgetGetter</h1>
+      </header>
+      <!-- carousel section -->
+      <!-- class="d-block" -->
+      <section
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./images/iPadPro12.jpeg" alt="iPadPro12" />
           </div>
-          <div class="card" style="width: 12rem;">
-            <img src="images/iPad.jpeg" class="card-img-top" alt="deviceImage">
-            <div class="card-body">
-              <h5 class="card-title">iPad</h5>
-              <p class="card-text">Type: tablet</p>
-              <a href="#" class="btn btn-primary">Rent this</a>
-            </div>
+          <div class="carousel-item">
+            <img src="./images/iphone-12.jpeg" alt="iPhone12" />
           </div>
-          <div class="card" style="width: 12rem;">
-            <img src="images/iPad.jpeg" class="card-img-top" alt="deviceImage">
-            <div class="card-body">
-              <h5 class="card-title">iPad</h5>
-              <p class="card-text">Type: tablet</p>
-              <a href="#" class="btn btn-primary">Rent this</a>
-            </div>
+          <div class="carousel-item">
+            <img src="./images/Kindlewhitebk.jpg" alt="Amazon Kindle" />
           </div>
-          <div class="card" style="width: 12rem;">
-            <img src="images/iPad.jpeg" class="card-img-top" alt="deviceImage">
-            <div class="card-body">
-              <h5 class="card-title">iPad</h5>
-              <p class="card-text">Type: tablet</p>
-              <a href="#" class="btn btn-primary">Rent this</a>
-            </div>
+          <div class="carousel-item">
+            <img src="./images/KindleFireHD10.jpeg" alt="Amazon Kindle Fire" />
           </div>
-          <div class="card" style="width: 12rem;">
-            <img src="images/iPad.jpeg" class="card-img-top" alt="deviceImage">
-            <div class="card-body">
-              <h5 class="card-title">iPad</h5>
-              <p class="card-text">Type: tablet</p>
-              <a href="#" class="btn btn-primary">Rent this</a>
-            </div>
+          <div class="carousel-item">
+            <img src="./images/MacBookPro2022WhiteBG.jpeg" alt="MacBook Pro" />
           </div>
-          <div class="card" style="width: 12rem;">
-            <img src="images/iPad.jpeg" class="card-img-top" alt="deviceImage">
-            <div class="card-body">
-              <h5 class="card-title">iPad</h5>
-              <p class="card-text">Type: tablet</p>
-              <a href="#" class="btn btn-primary">Rent this</a>
+          <div class="carousel-item">
+            <img src="./images/MacbookAir.jpeg" alt="MacBookAir" />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./images/MSSurfaceLaptopWhiteBG.jpeg"
+              alt="Microsoft Surface Laptop Go 2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./images/Samsung-Galaxy-Tab-S6.jpeg"
+              alt="SamSung Glaxy Tab S6"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./images/MSSurfaceProwhitebk.jpeg"
+              alt="Microsoft Suface Pro 8"
+            />
+          </div>
+          <div class="carousel-item">
+            <img src="./images/apple-tv.jpeg" alt="Apple TV" />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev carouselBtn"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+          <span>Previous</span>
+        </button>
+        <button
+          class="carousel-control-next carouselBtn"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+          <span>Next</span>
+        </button>
+      </section>
+    </div>
+
+    <!-- this is the grid container that we're exploring. -->
+    <div class="flex-row align-items-start">
+      <div class="d-flex">
+        <!-- ⬇️////////////// SIDEBAR //////////////⬇️ -->
+        <div
+          class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+          style="width: 280px"
+        >
+          <a
+            href="/"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+          >
+            <svg class="bi pe-none me-2" width="40" height="32">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-4">Menu</span>
+          </a>
+          <hr />
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link" aria-current="page">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#home"></use>
+                </svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#speedometer2"></use>
+                </svg>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#table"></use>
+                </svg>
+                Login
+              </a>
+            </li>
+
+            <li class="dropdown">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                id="dropdownUser1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#grid"></use>
+                </svg>
+                Devices
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark text-small shadow"
+                aria-labelledby="dropdownUser1"
+              >
+                <li><a class="dropdown-item" href="#">Show All</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Show Available Only</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Show Types</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                id="dropdownUser1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#grid"></use>
+                </svg>
+                Users
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark text-small shadow"
+                aria-labelledby="dropdownUser1"
+              >
+                <li><a class="dropdown-item" href="#">Show All</a></li>
+                <li><a class="dropdown-item" href="#">IT admins</a></li>
+                <li><a class="dropdown-item" href="#">Teachers</a></li>
+                <li><a class="dropdown-item" href="#">Students</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#" class="nav-link">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#grid"></use>
+                </svg>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- ⬆️////////////// SIDEBAR //////////////⬆️ -->
+
+        <!-- device cards -->
+
+        <!-- this could be a handlebar partial -->
+        <div class="container">
+          <div class="cardContainer d-flex flex-row flex-wrap">
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/iphone-12.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">iPhone</h5>
+                <p class="card-text">Type: Smart Phone</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/iPadPro12.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">iPad Pro</h5>
+                <p class="card-text">Type: Tablet</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/MacBookPro2022WhiteBG.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Macbook Pro</h5>
+                <p class="card-text">Type: Computer</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/apple-tv.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Apple TV</h5>
+                <p class="card-text">Type: Media Player</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/MacbookAir.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">MacBook Air</h5>
+                <p class="card-text">Type: Computer</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/Kindlewhitebk.jpg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Kindle</h5>
+                <p class="card-text">Type: eBook Reader</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/KindleFireHD10.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Kindle Fire HD10</h5>
+                <p class="card-text">Type: Tablet</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/Samsung-Galaxy-Tab-S6.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Samsung Galaxy Tab S6</h5>
+                <p class="card-text">Type: Tablet</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/MSSurfaceLaptopWhiteBG.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Microsoft Surface Laptop Go 2</h5>
+                <p class="card-text">Type: Computer</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
+            </div>
+            <div class="card" style="width: 12rem">
+              <img
+                src="images/MSSurfaceProwhitebk.jpeg"
+                class="card-img-top"
+                alt="deviceImage"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Microsoft Surface Pro</h5>
+                <p class="card-text">Type: Tablet</p>
+                <a href="#" class="btn btn-primary">Rent this</a>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
-
+      <!-- user cards -->
     </div>
-    <!-- user cards -->
-  </div>
-</body>
-
+    <footer>
+      <h5>Georgia Tech Coding Bootcamp 2022</h5>
+      <h6>&copy; Project2-Group 7. All Rights Reserved.</h6>
+    </footer>
+  </body>
 </html>
