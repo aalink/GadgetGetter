@@ -28,14 +28,14 @@ const lookUp = async (event) => {
   const id = document.querySelector('#ID-signup').value.trim();
 
   if (id) {
-    const response = await fetch(`/api/users/signup/${id}`, {
+    const response = await fetch(`/signup/${id}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
     console.log(response);
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace(`/api/users/signup/${id}`);
+      document.location.replace(`/signup/${id}`);
     } else {
       alert(response.message);
     }
