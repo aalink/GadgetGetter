@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 ////////////////////////////////////////////////////////////////
@@ -8,14 +9,14 @@ const { User } = require('../../models');
 router.get("/", (req, res) => {
   // find all users
   // be sure to include its associated data
-  User.findAll({})
+  User.findAll()
     .then((users) => res.json(users))
     .catch((err) => res.status(500).json(err));
 });
 
 router.get("/:id", (req, res) => {
   // find a single user by its `id`
-  User.findByPk(req.params.id, {})
+  User.findByPk(req.params.id)
     .then((user) => res.json(user))
     .catch((err) => res.status(400).json(err));
 });
@@ -24,44 +25,58 @@ router.get("/:id", (req, res) => {
 ////////////////////////////////////////////////////////////////
 
 
-router.post('/', async (req, res) => {
-  try {
-    const userData = await User.findOne({ where: { id: req.params.id } });
-    const user = userData.get({ plain: true });
-    if (!user) {
-      res
-        .status(404)
-        .json({ message: 'ID not found, please try again' });
-      return;
-    }
-    if (user.signedUp){
-      res.status(400).json({ message: 'User already signed up, Log in' });
-      return;
-    }
-      console.log(user);
-      res.render('sign-up', {user} );
-    } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// router.post('/', async (req, res) => {
+//   try {
+//     const userData = await User.findOne({ where: { id: req.params.id } });
+//     const user = userData.get({ plain: true });
+//     if (!user) {
+//       res
+//         .status(404)
+//         .json({ message: 'ID not found, please try again' });
+//       return;
+//     }
+//     if (user.signedUp){
+//       res.status(400).json({ message: 'User already signed up, Log in' });
+//       return;
+//     }
+//       console.log(user);
+//       res.render('signup', {user} );
+//     } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 // Sign Up of a new user (available for users and admins)
-router.put('/', async (req, res) => {
+
+
+router.put('/signup/:id', async (req,res) => {
   try {
-    const userData = await User.update(req.body, { where: { id: req.body.id } });
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
+    // console.log('jelou');
+    // console.log('test');
+    const userData = await User.update(req.body,
+      {
+      where: {
+        id: req.params.id,
+      },
+      individualHooks: true,
     });
-  } catch (err) {
-    res.status(400).json(err);
+    // console.log(userData);
+    if(userData){
+      const dataSession = await User.findByPk(req.params.id);
+      // console.log(dataSession);
+      req.session.save(() => {
+        req.session.user_id = dataSession.id;
+        req.session.logged_in = true;
+        res.status(200).json({ user: dataSession, message: 'You are now logged in!' });
+      });
+    }
+  } catch (error){
+    res.status(500).json(error);
   }
 });
+
 // Adding a new user to the db (available only for admins)
-router.post('/add', async (req, res) => {
+router.post('/add', withAuth, async (req, res) => {
   try {
     const userData = await User.create(req.body);
     res.status(200).json(userData);

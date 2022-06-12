@@ -74,13 +74,28 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.get('/signup', (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.logged_in) {
-//     res.redirect('/');
-//     return;
-//   }
-
-//   res.render('sign-up');
-// });
+router.get('/signup/:id', async (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+    const userData = await User.findByPk(req.params.id);
+    const user = userData.get({ plain: true });
+    if (!userData) {
+      res
+        .status(404)
+        .json({ message: 'ID not found, please try again' });
+      return;
+    }
+    if (user.isSignedUp === true){
+      res.redirect('/');
+      return
+    }
+      // console.log(user);
+      res.render('signup',{user});
+    } catch (err) {
+    res.status(400).json({message : 'Jodiste'});
+  }
+});
 module.exports = router;
