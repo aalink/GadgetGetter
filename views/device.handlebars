@@ -1,12 +1,10 @@
-<div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-
-  </p>
-  <p>
-    <button class="btn btn-primary">GadgetGetter</button>
-  </p>
+<div class="cardContainer d-flex flex-row flex-wrap">
+  <div class="card" style="width: 12rem">
+    <img src="images/iphone-12.jpeg" class="card-img-top" alt="deviceImage" />
+    <div class="card-body">
+      <h5 class="card-title">{{name}}</h5>
+      <p class="card-text">{{device_type}}</p>
+      <a href="#" class="btn btn-primary">Rent this</a>
+    </div>
+  </div>
 </div>

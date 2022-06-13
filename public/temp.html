@@ -1,0 +1,47 @@
+<!-- original main handlebar -->
+<div class="flex-column justify-space-around">
+    <header
+      class="bg-light display-flex justify-space-between align-center p-2"
+    >
+      <h1>
+        <a href="/">GadgetGetter</a>
+        <span role="img" aria-label="device">💻 🖥 📱</span>
+      </h1>
+      <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+          <a href="/profile">profile</a>
+          |
+          <button class="no-button" id="logout">logout</button>
+        {{else}}
+          <a class="btn btn-primary" href="/login" role="button">LOGIN</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{body}}}
+    </main>
+    <footer>
+
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+  {{/if}}
+
+<!-- original device handlebar -->
+<div class="text-center">
+    <h2>{{name}}</h2>
+    <p>{{{get_emoji}}}</p>
+    <p>{{description}}</p>
+    <p>Created by {{user.name}} on {{format_date date_created}}</p>
+    <p>
+  
+    </p>
+    <p>
+      <button class="btn btn-primary">GadgetGetter</button>
+    </p>
+  </div>
