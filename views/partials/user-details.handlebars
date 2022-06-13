@@ -1,0 +1,11 @@
+{{#each users as |user| }}
+    <div class="card" style="width: 12rem">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.name}}</h5>
+                    <p class="card-text">Type: {{user.type}}</p>
+                    <ul class="card-text">Current Device: 
+                        <li>{{user.device.name}}</li>
+                    </ul>
+                </div>
+    </div>
+{{/each}}

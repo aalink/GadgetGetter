@@ -2,25 +2,35 @@ const router = require('express').Router();
 const { Device, User } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Route: localhost:3001---showhomepage
 router.get('/', async (req, res) => {
   try{
     // Get all devices and JOIN with user data
-    const deviceData = await Device.findAll({});
+    const deviceData = await Device.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        }
+      ]
+    });
 
     // Serialize data so the template can read it
     const devices = deviceData.map((device) => device.get({ plain: true }));
     // res.status(200).json(devices);
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      devices, 
-      logged_in: req.session.logged_in 
-    });
-    // res.redirect('/profile');
+    //Jessie: If logged in, render homepage, if not, render loginsignup page, this part is done in the front end main.handlebars.
+    if (req.session.logged_in) {
+      res.render('homepage')
+    } else {
+      res.render('login')
+    }
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+//
 router.get('/device/:id', async (req, res) => {
   try {
     const deviceData = await Device.findByPk(req.params.id, {
@@ -45,6 +55,7 @@ router.get('/device/:id', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
+//Jessie: we don't have a profile page. Maybe we should build one.
 router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -54,7 +65,7 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-
+  
     res.render('profile', {
       ...user,
       logged_in: true
@@ -74,6 +85,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//Jessie: since login and signup page are the same, maybe we can just delete this part. 
 router.get('/signup/:id', async (req, res) => {
   try {
     if (req.session.logged_in) {
