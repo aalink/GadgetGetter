@@ -14,7 +14,8 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
+      // if successful, redirect to homepage.
+      window.alert(`You're now logged in!`)
       document.location.replace('/');
     } else {
       alert(response.statusText);
@@ -22,25 +23,31 @@ const loginFormHandler = async (event) => {
   }
 };
 
-const lookUp = async (event) => {
+const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const id = document.querySelector('#ID-signup').value.trim();
+  // Collect values from the login form
+  const name = document.querySelector('#name-signup').value.trim();
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
 
-  if (id) {
-    const response = await fetch(`/signup/${id}`, {
-      method: 'GET',
+  if (name && email && password) {
+    // signup and login are on the same page
+    const response = await fetch('/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-    console.log(response);
+
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace(`/signup/${id}`);
+      // if response.ok
+      window.alert(`You're now signed up!`)
+      //redirect to homepage: 
+      document.location.replace('/');
     } else {
-      alert(response.message);
+      alert(response.statusText);
     }
   }
-  
 };
 
 document
@@ -48,7 +55,7 @@ document
   .addEventListener('submit', loginFormHandler);
 
 document
-  .querySelector('.lookup-form')
-  .addEventListener('submit', lookUp);
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
 
 

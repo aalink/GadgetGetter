@@ -7,7 +7,7 @@
     "user_id": null   
   },
   {
-    "name": "iPad",
+    "name": "iPad Pro",
     "device_type": "Tablet",
     "device_serial_number": 1001,
     "is_available": true,
@@ -45,13 +45,6 @@
     "name": "Kindle Fire HD10",
     "device_type": "Tablet",
     "device_serial_number": 1006,
-    "is_available": false,
-    "user_id": 3
-  },
-  {
-    "name": "Kindle Fire HD10",
-    "device_type": "Tablet",
-    "device_serial_number": 1007,
     "is_available": false,
     "user_id": 3
   },
