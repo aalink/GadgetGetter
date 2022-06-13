@@ -20,11 +20,10 @@ router.get('/', async (req, res) => {
     // res.status(200).json(devices);
     // Pass serialized data and session flag into template
     //Jessie: If logged in, render homepage, if not, render loginsignup page, this part is done in the front end main.handlebars.
-    if (req.session.logged_in) {
-      res.render('homepage')
-    } else {
-      res.render('login')
-    }
+    res.render('homepage', {
+      devices,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -110,4 +109,15 @@ router.get('/signup/:id', async (req, res) => {
     res.status(400).json({message : 'Jodiste'});
   }
 });
+
+//Note: this route is not working so far
+router.get('/rentalAgreement', (req, res) => {
+  res.render('rentalAgreement');
+})
+//note: this route is not working so far
+router.get('/finalpage', (req, res) => {
+  res.render('finalpage');
+})
+
+
 module.exports = router;
