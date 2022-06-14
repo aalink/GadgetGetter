@@ -30,28 +30,28 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 //
-router.get('/device/:id', async (req, res) => {
-  try {
-    const deviceData = await Device.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+// router.get('/devices/:id', async (req, res) => {
+//   try {
+//     const deviceData = await Device.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
 
-    const device = deviceData.get({ plain: true });
+//     const device = deviceData.get({ plain: true });
 
-    res.render('device', {
-      ...device,
+//     res.render('device', {
+//       ...device,
 
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // Use withAuth middleware to prevent access to route
 //Jessie: we don't have a profile page. Maybe we should build one.
