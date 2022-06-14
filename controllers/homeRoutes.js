@@ -3,7 +3,7 @@ const { Device, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Route: localhost:3001---showhomepage
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try{
     // Get all devices and JOIN with user data
     const deviceData = await Device.findAll({
@@ -85,30 +85,30 @@ router.get('/login', (req, res) => {
 });
 
 //Jessie: since login and signup page are the same, maybe we can just delete this part. 
-router.get('/signup/:id', async (req, res) => {
-  try {
-    if (req.session.logged_in) {
-      res.redirect('/');
-      return;
-    }
-    const userData = await User.findByPk(req.params.id);
-    const user = userData.get({ plain: true });
-    if (!userData) {
-      res
-        .status(404)
-        .json({ message: 'ID not found, please try again' });
-      return;
-    }
-    if (user.isSignedUp === true){
-      res.redirect('/');
-      return
-    }
-      // console.log(user);
-      res.render('signup',{user});
-    } catch (err) {
-    res.status(400).json({message : 'Jodiste'});
-  }
-});
+// router.get('/signup/:id', async (req, res) => {
+//   try {
+//     if (req.session.logged_in) {
+//       res.redirect('/');
+//       return;
+//     }
+//     const userData = await User.findByPk(req.params.id);
+//     const user = userData.get({ plain: true });
+//     if (!userData) {
+//       res
+//         .status(404)
+//         .json({ message: 'ID not found, please try again' });
+//       return;
+//     }
+//     if (user.isSignedUp === true){
+//       res.redirect('/');
+//       return
+//     }
+//       // console.log(user);
+//       res.render('signup',{user});
+//     } catch (err) {
+//     res.status(400).json({message : 'Jodiste'});
+//   }
+// });
 
 //Note: this route is not working so far
 router.get('/rentalAgreement', (req, res) => {

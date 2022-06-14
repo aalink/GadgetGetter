@@ -133,15 +133,16 @@
                 Profile
               </a>
             </li>
+            {{#unless logged_in}}
             <li>
-              <a href="/api/users/login" class="nav-link">
+              <a href="/login" class="nav-link">
                 <svg class="bi pe-none me-2" width="16" height="16">
                   <use xlink:href="#table"></use>
                 </svg>
                 Login
               </a>
             </li>
-
+            {{/unless}}
             <li class="dropdown">
               <a
                 href="#"
@@ -190,26 +191,27 @@
                 <li><a class="dropdown-item" href="#">Students</a></li>
               </ul>
             </li>
-
+            {{#if logged_in}}
             <li>
-              <a href="/api/users/logout" class="nav-link">
+              <a href="/" class="nav-link logout-button">
                 <svg class="bi pe-none me-2" width="16" height="16">
                   <use xlink:href="#grid"></use>
                 </svg>
                 Logout
               </a>
             </li>
+            {{/if}}
           </ul>
         </div>
 
         <!-- ⬇️////////////// HOMEPAGE //////////////⬇️ -->
         {{!-- click the right button to show the proper page --}}
-        {{#if logged_in}}
+        {{!-- {{#if logged_in}} --}}
             {{{ body }}}
-        {{else}}
-            {{> login}}
+        {{!-- {{else}} --}}
+            {{!-- {{> login}} --}}
             {{!-- <a class="btn btn-primary" href="/login" role="button">LOGIN</a> --}}
-        {{/if}}
+        {{!-- {{/if}} --}}
         {{!-- {{{ body }}} --}}
       
       </div>

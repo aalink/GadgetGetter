@@ -39,10 +39,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    isSignedUp: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    }
   },
   {
     hooks: {

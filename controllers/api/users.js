@@ -25,23 +25,14 @@ router.get("/:id", (req, res) => {
 // Sign Up of a new user (available for users and admins)
 
 
-router.put('/signup/:id', async (req,res) => {
+router.post('/', async (req,res) => {
   try {
-    const userData = await User.update(req.body,
-      {
-      where: {
-        id: req.params.id,
-      },
-      individualHooks: true,
-    });
-    if(userData){
-      const dataSession = await User.findByPk(req.params.id);
+    const userData = await User.create(req.body);
       req.session.save(() => {
-        req.session.user_id = dataSession.id;
+        req.session.user_id = userData.id;
         req.session.logged_in = true;
-        res.status(200).json({ user: dataSession, message: 'You are now logged in!' });
+        res.status(200).json({ user: userData, message: 'You are now logged in!' });
       });
-    }
   } catch (error){
     res.status(500).json(error);
   }
