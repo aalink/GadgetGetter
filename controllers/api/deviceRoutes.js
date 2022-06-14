@@ -40,6 +40,7 @@ router.get("/", withAuth, async (req, res) => {
 // });
 
 //THIS ROUTE IS NOT WORKING PROPERLY.
+//ROUTE: api/devices/id
 router.get('/:id', async (req, res) => {
   try {
     const deviceData = await Device.findByPk(req.params.id, {
