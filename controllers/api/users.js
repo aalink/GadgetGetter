@@ -141,3 +141,7 @@ router.post("/logout", (req, res) => {
 });
 
 module.exports = router;
+
+router.get("/devices", (req, res) =>{
+
+});
