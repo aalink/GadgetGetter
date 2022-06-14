@@ -204,5 +204,27 @@ router.get('/devices/smartphone', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/users', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      include: [
+        {
+          model: Device,
+          attributes: ['name'],
+        }
+      ]
+    });
+
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render('users', {
+      users,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
 
