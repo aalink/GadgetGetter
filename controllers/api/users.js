@@ -1,24 +1,75 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Device } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
 //////////////////////////////////////////
-//Route: api/users/
+//Route: api/users/----NOT WORKING
 
-router.get("/", (req, res) => {
-  // find all users
-  // be sure to include its associated data
-  User.findAll()
-    .then((users) => res.json(users))
-    .catch((err) => res.status(500).json(err));
-});
+// router.get('/', async (req, res) => {
+//   try {
+//     const userData = await User.findAll({
+//       include: [
+//         {
+//           model: Device,
+//           attributes: ['name'],
+//         }
+//       ]
+//     });
+
+//     const users = userData.map((user) => user.get({ plain: true }));
+
+//     res.render('users', {
+//       ...users,
+//       logged_in: true
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }  
 
 router.get("/:id", (req, res) => {
   // find a single user by its `id`
   User.findByPk(req.params.id)
     .then((user) => res.json(user))
     .catch((err) => res.status(400).json(err));
+});
+
+//NOT working yet
+router.get('/admins', (req, res) => {
+  const userData = User.findAll({
+    where: {
+      type: admin
+    }
+  }).then((userData) => {
+    res.json(userData);
+  })
+
+  if(!userData) {
+    res.status(400).json({ message: 'No user data was found with this condition.'});
+    return;
+  } else {
+    res.render('users', userData);
+  }
+});
+
+router.get('/teachers', (req, res) => {
+  User.findAll({
+    where: {
+      type: teacher
+    }
+  }).then((userData) => {
+    res.json(userData);
+  })
+});
+
+router.get('/students', (req, res) => {
+  User.findAll({
+    where: {
+      type: student
+    }
+  }).then((userData) => {
+    res.json(userData);
+  })
 });
 
 

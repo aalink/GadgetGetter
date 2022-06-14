@@ -1,5 +1,8 @@
-{{#each devices as |device| }}
-    <div class="card" style="width: 12rem">
+{{!-- devices page in use for Show All Devices, however the id route is not correct.--}}
+<div class="container">
+    <div class="cardContainer d-flex flex-row flex-wrap">
+        {{#each devices as |device| }}
+           <div class="card" style="width: 12rem">
                 <img
                     src="images/{{device.name}}.jpeg"
                     class="card-img-top"
@@ -10,5 +13,7 @@
                     <p class="card-text">Type: {{device.device_type}}</p>
                     <a href="#" class="btn btn-primary rentBtn">Rent this</a>
                 </div>
-        </div>
-{{/each}}
+           </div>
+        {{/each}}
+    </div>
+</div>
