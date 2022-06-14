@@ -145,7 +145,7 @@ router.get("/devices", withAuth, async (req, res) => {
   }
 });
 
-router.get('/devices/:id', async (req, res) => {
+router.get('/device/:id', async (req, res) => {
   try {
     const deviceData = await Device.findByPk(req.params.id, {
       include: [
@@ -157,9 +157,9 @@ router.get('/devices/:id', async (req, res) => {
     });
 
     const device = deviceData.get({ plain: true });
-
+    console.log(device);
     res.render('device', {
-      ...device,
+      device,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -167,5 +167,42 @@ router.get('/devices/:id', async (req, res) => {
   }
 });
 
+router.get('/devices/is_available', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        is_available: true,
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/devices/smartphone', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        device_type: 'Smart Phone',
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
 

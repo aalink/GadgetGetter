@@ -4,12 +4,12 @@
         {{#each devices as |device| }}
            <div class="card" style="width: 12rem">
                 <img
-                    src="images/{{device.name}}.jpeg"
+                    src="/images/{{device.name}}.jpeg"
                     class="card-img-top"
                     alt="deviceImage"
                 />
                 <div class="card-body">
-                    <h5 class="card-title"><a href="/devices/{{device.id}}">{{device.name}}</a></h5>
+                    <h5 class="card-title"><a href="/device/{{device.id}}">{{device.name}}</a></h5>
                     <p class="card-text">Type: {{device.device_type}}</p>
                     <a href="#" class="btn btn-primary rentBtn">Rent this</a>
                 </div>
