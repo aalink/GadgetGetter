@@ -179,7 +179,6 @@ user agent stylesheet div {
   margin-right: -75%;
 }
 
-
 .card {
   display: flex;
   flex-direction: column;
@@ -245,9 +244,14 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   padding: 50px;
   /* margin: 50px 50px 50px 80px; */
   margin: auto;
+}
+
+.final-page ul {
+  list-style-type: none;
 }
 
 .profile-page {
@@ -259,6 +263,7 @@ footer {
   margin: auto;
 }
 
-.profile-page h2, h4 {
+.profile-page h2,
+h4 {
   padding: 20px;
 }
