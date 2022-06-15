@@ -205,6 +205,81 @@ router.get('/devices/smartphone', async (req, res) => {
   }
 });
 
+router.get('/devices/tablet', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        device_type: 'Tablet',
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/devices/computer', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        device_type: 'Computer',
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/devices/media_player', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        device_type: 'Media Player',
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+router.get('/devices/ebook_reader', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        device_type: 'eBook Reader',
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/users', async (req, res) => {
   try {
     const userData = await User.findAll({
