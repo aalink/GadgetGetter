@@ -38,7 +38,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//api/devices/is_available--------NOT WORKING yet
+// api/devices/is_available--------NOT WORKING yet
 // router.get('/:is_available', async (req, res) => {
 //   try {
 //     const deviceData = await Device.findAll({

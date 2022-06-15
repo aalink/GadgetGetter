@@ -39,7 +39,7 @@
     "name": "Bran",
     "email": "test6@email.com",
     "password": "password12345",
-    "type": "IT admin"
+    "type": "admin"
   },
   {
     "id": 7,
