@@ -112,7 +112,7 @@ router.get('/login', (req, res) => {
 
 //Note: this route is not working so far
 router.get('/rentalAgreement', (req, res) => {
-  res.render('rentalAgreement');
+  res.render('rentalAgreement',{user_id: req.session.user_id});
 })
 //note: this route is not working so far
 router.get('/finalpage', (req, res) => {
