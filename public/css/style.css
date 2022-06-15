@@ -175,9 +175,10 @@ user agent stylesheet div {
   align-items: center;
 }
 
-.carousel-inner img {
-  margin: auto;
+.carousel-item {
+  margin-right: -75%;
 }
+
 
 .card {
   display: flex;
