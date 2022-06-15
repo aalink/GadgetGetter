@@ -119,5 +119,112 @@ router.get('/finalpage', (req, res) => {
   res.render('finalpage');
 })
 
+router.get("/devices", withAuth, async (req, res) => {
+  // find all devices
+  // be sure to include its associated data
+  try{
+    // Get all devices and JOIN with user data
+    const deviceData = await Device.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        }
+      ]
+    });
 
+    // Serialize data so the template can read it
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+    
+    res.render('devices', {
+      devices,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/device/:id', async (req, res) => {
+  try {
+    const deviceData = await Device.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const device = deviceData.get({ plain: true });
+    console.log(device);
+    res.render('device', {
+      device,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/devices/is_available', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        is_available: true,
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/devices/smartphone', async (req, res) => {
+  try {
+    const deviceData = await Device.findAll({
+      where: {
+        device_type: 'Smart Phone',
+      }
+    });
+
+    const devices = deviceData.map((device) => device.get({ plain: true }));
+
+    res.render('devices', {
+      devices, 
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/users', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      include: [
+        {
+          model: Device,
+          attributes: ['name'],
+        }
+      ]
+    });
+
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render('users', {
+      users,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
+

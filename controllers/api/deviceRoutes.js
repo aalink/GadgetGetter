@@ -4,32 +4,7 @@ const withAuth = require('../../utils/auth');
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-//api/devices
-router.get("/", withAuth, async (req, res) => {
-  // find all devices
-  // be sure to include its associated data
-  try{
-    // Get all devices and JOIN with user data
-    const deviceData = await Device.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        }
-      ]
-    });
 
-    // Serialize data so the template can read it
-    const devices = deviceData.map((device) => device.get({ plain: true }));
-    
-    res.render('devices', {
-      devices,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 //api/devices/:id
 // router.get("/:id", (req, res) => {
