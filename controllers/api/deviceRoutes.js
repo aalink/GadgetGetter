@@ -27,7 +27,7 @@ router.put('/:id', async (req, res) => {
     });
 
     if (deviceData){
-      res.status(200)
+      res.render('finalpage');
     }
   } catch (err) {
     res.status(500).json(err);
