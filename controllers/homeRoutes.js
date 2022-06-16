@@ -111,13 +111,13 @@ router.get('/login', (req, res) => {
 // });
 
 //Note: this route is not working so far
-router.get('/rentalAgreement', (req, res) => {
+router.get('/rentalAgreement/:id', withAuth, (req, res) => {
   res.render('rentalAgreement',{user_id: req.session.user_id});
 })
 //note: this route is not working so far
-router.get('/finalpage', (req, res) => {
-  res.render('finalpage');
-})
+// router.get('/finalpage', withAuth, (req, res) => {
+//   res.render('finalpage');
+// })
 
 router.get("/devices", withAuth, async (req, res) => {
   // find all devices
@@ -145,7 +145,7 @@ router.get("/devices", withAuth, async (req, res) => {
   }
 });
 
-router.get('/device/:id', async (req, res) => {
+router.get('/device/:id', withAuth, async (req, res) => {
   try {
     const deviceData = await Device.findByPk(req.params.id, {
       include: [
@@ -167,7 +167,7 @@ router.get('/device/:id', async (req, res) => {
   }
 });
 
-router.get('/devices/is_available', async (req, res) => {
+router.get('/devices/is_available', withAuth, async (req, res) => {
   try {
     const deviceData = await Device.findAll({
       where: {
@@ -186,7 +186,7 @@ router.get('/devices/is_available', async (req, res) => {
   }
 });
 
-router.get('/devices/smartphone', async (req, res) => {
+router.get('/devices/smartphone', withAuth, async (req, res) => {
   try {
     const deviceData = await Device.findAll({
       where: {
@@ -205,7 +205,7 @@ router.get('/devices/smartphone', async (req, res) => {
   }
 });
 
-router.get('/devices/tablet', async (req, res) => {
+router.get('/devices/tablet', withAuth, async (req, res) => {
   try {
     const deviceData = await Device.findAll({
       where: {
@@ -224,7 +224,7 @@ router.get('/devices/tablet', async (req, res) => {
   }
 });
 
-router.get('/devices/computer', async (req, res) => {
+router.get('/devices/computer', withAuth, async (req, res) => {
   try {
     const deviceData = await Device.findAll({
       where: {
@@ -243,7 +243,7 @@ router.get('/devices/computer', async (req, res) => {
   }
 });
 
-router.get('/devices/media_player', async (req, res) => {
+router.get('/devices/media_player', withAuth, async (req, res) => {
   try {
     const deviceData = await Device.findAll({
       where: {
@@ -261,7 +261,7 @@ router.get('/devices/media_player', async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.get('/devices/ebook_reader', async (req, res) => {
+router.get('/devices/ebook_reader', withAuth, async (req, res) => {
   try {
     const deviceData = await Device.findAll({
       where: {
@@ -280,9 +280,83 @@ router.get('/devices/ebook_reader', async (req, res) => {
   }
 });
 
-router.get('/users', async (req, res) => {
+router.get('/users', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
+      include: [
+        {
+          model: Device,
+        }
+      ]
+    });
+
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render('users', {
+      users,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/users/admins', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      where: {
+        type: 'admin',
+      },
+      include: [
+        {
+          model: Device,
+          attributes: ['name'],
+        }
+      ]
+    });
+
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render('users', {
+      users,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/users/teachers', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      where: {
+        type: 'teacher',
+      },
+      include: [
+        {
+          model: Device,
+          attributes: ['name'],
+        }
+      ]
+    });
+
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render('users', {
+      users,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/users/students', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      where: {
+        type: 'student',
+      },
       include: [
         {
           model: Device,

@@ -1,13 +1,12 @@
-const agreeHandler = async (event) => {
+const agreeHandler = async (event) => { 
     const userId = event.target.getAttribute("data-userid");
-    console.log(userId);
-    const response = await fetch ('/api/devices/:id', {
+    const response = await fetch (`/api/devices/${document.location.pathname.split('/')[2]}`, {
             method: 'PUT',
-            body: JSON.stringify({userId}),
+            body: JSON.stringify({user_id: userId}),
             headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok){
-            document.location.replace('/profile');
+            document.location.replace('/finalpage');
     } else {
             alert(response.statusText);
     }

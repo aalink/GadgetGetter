@@ -4,7 +4,9 @@
                     <h5 class="card-title">{{user.name}}</h5>
                     <p class="card-text">Type: {{user.type}}</p>
                     <ul class="card-text">Current Device: 
-                        <li>{{user.device.name}}</li>
+                        {{#each user.device as |device|}}
+                        <li>{{device.name}}</li>
+                        {{/each}}
                     </ul>
                 </div>
     </div>
