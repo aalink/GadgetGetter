@@ -16,23 +16,19 @@ const withAuth = require('../../utils/auth');
 
 //THIS ROUTE IS NOT WORKING PROPERLY.
 //ROUTE: api/devices/id
-router.get('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const deviceData = await Device.findByPk(req.params.id, {
-      include: [
+    const deviceData = await Device.update(req.body, {
+      where: [
         {
-          model: User,
-          attributes: ['name'],
+          id: req.params.id,
         },
       ],
     });
 
-    const device = deviceData.get({ plain: true });
-
-    res.render('device', {
-      ...device,
-      logged_in: req.session.logged_in
-    });
+    if (deviceData){
+      res.render('finalpage');
+    }
   } catch (err) {
     res.status(500).json(err);
   }
