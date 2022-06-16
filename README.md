@@ -82,9 +82,9 @@ If you have any questions for anyone on our team, our contact information is bel
 - Email: 
 
 ### `James Wong`
-- GitHub: 
+- GitHub: https://github.com/James-Y-Wong
 
-- Email: 
+- Email: jamesyeuwong@gmail.com
 
 ### `Aaron Yacher`
 - GitHub: https://github.com/aalink
