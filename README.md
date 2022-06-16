@@ -72,14 +72,14 @@ If you have any questions for anyone on our team, our contact information is bel
 
 
 ### `Jessie Doherty`
-- GitHub: 
+- GitHub: https://github.com/zhuzhu930
 
-- Email: 
+- Email: zhuzhu93028@gmail.com
 
 ### `Raul Rangel`
-- GitHub: 
+- GitHub: https://github.com/rrangel07
 
-- Email: 
+- Email: raulanrangel07@gmail.com
 
 ### `James Wong`
 - GitHub: https://github.com/James-Y-Wong
