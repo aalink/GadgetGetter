@@ -175,6 +175,10 @@ user agent stylesheet div {
   align-items: center;
 }
 
+.carousel-item {
+  margin-right: -75%;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -207,4 +211,59 @@ footer {
   justify-content: center;
   padding: 50px;
   margin: 20px;
+}
+
+.agreement-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  margin: 50px;
+}
+
+.agreement-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.agreement-buttons button {
+  padding: 10px;
+  margin: 30px;
+  background-color: darkblue;
+  border-radius: 1rem;
+}
+
+.agreement-buttons button a {
+  color: white;
+  text-decoration: none;
+}
+
+.final-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px;
+  /* margin: 50px 50px 50px 80px; */
+  margin: auto;
+}
+
+.final-page ul {
+  list-style-type: none;
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  margin: auto;
+}
+
+.profile-page h2,
+h4 {
+  padding: 20px;
 }
