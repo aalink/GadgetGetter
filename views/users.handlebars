@@ -1,6 +1,8 @@
 {{!-- users section --}}
 <div class="container">
     <div class="cardContainer d-flex flex-row flex-wrap">
+        {{#each users as |user| }}
         {{> user-details }}
+        {{/each}}
     </div>
 </div>

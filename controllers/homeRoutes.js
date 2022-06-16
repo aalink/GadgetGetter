@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Device, User } = require('../models');
+const { User, Device } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Route: localhost:3001---showhomepage
@@ -283,15 +283,11 @@ router.get('/devices/ebook_reader', withAuth, async (req, res) => {
 router.get('/users', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
-      include: [
-        {
-          model: Device,
-        }
-      ]
+      include: [{ model: Device }],
     });
 
     const users = userData.map((user) => user.get({ plain: true }));
-
+    console.log(users);
     res.render('users', {
       users,
       logged_in: true

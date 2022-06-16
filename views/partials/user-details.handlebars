@@ -1,13 +1,11 @@
-{{#each users as |user| }}
     <div class="card" style="width: 12rem">
                 <div class="card-body">
-                    <h5 class="card-title">{{user.name}}</h5>
-                    <p class="card-text">Type: {{user.type}}</p>
-                    <ul class="card-text">Current Device: 
-                        {{#each user.device as |device|}}
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">Type: {{type}}</p>
+                    <ul class="card-text">Current Device:
+                        {{#each devices as |device|}}
                         <li>{{device.name}}</li>
                         {{/each}}
                     </ul>
                 </div>
     </div>
-{{/each}}
