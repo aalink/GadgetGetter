@@ -187,10 +187,16 @@
                 class="dropdown-menu dropdown-menu-dark text-small shadow"
                 aria-labelledby="dropdownUser1"
               >
+              {{#if isAdmin}}
                 <li><a class="dropdown-item" href="/users">Show All</a></li>
+                {{/if}}
                 <li><a class="dropdown-item" href="/users/admins">IT admins</a></li>
+              {{#if isAdmin}}
                 <li><a class="dropdown-item" href="/users/teachers">Teachers</a></li>
+                {{/if}}
+                {{#or isAdmin isTeacher}}
                 <li><a class="dropdown-item" href="/users/students">Students</a></li>
+                {{/or}}
               </ul>
             </li>
             {{#if logged_in}}

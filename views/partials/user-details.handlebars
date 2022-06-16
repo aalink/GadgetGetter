@@ -1,11 +1,14 @@
-    <div class="card" style="width: 12rem">
-                <div class="card-body">
-                    <h5 class="card-title">{{name}}</h5>
-                    <p class="card-text">Type: {{type}}</p>
-                    <ul class="card-text">Current Device:
-                        {{#each devices as |device|}}
-                        <li>{{device.name}}</li>
-                        {{/each}}
-                    </ul>
-                </div>
+<div class="card" style="width: 12rem">
+    <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">Type: {{type}}</p>
+        <ul class="card-text">Current Device:
+            {{#each devices as |device|}}
+            <li>{{device.name}}</li>
+            {{/each}}
+        </ul>
+        {{#if isAdmin}}
+        <a href="#" class="btn btn-danger delete-btn" data-user='{{id}}'>Delete</a>
+        {{/if}}
     </div>
+</div>

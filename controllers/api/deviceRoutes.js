@@ -27,7 +27,7 @@ router.put('/:id', async (req, res) => {
     });
 
     if (deviceData){
-      res.render('finalpage');
+      res.status(200).json({message: 'Updated Succesfuly'});
     }
   } catch (err) {
     res.status(500).json(err);

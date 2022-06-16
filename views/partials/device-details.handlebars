@@ -1,14 +1,16 @@
-{{#each devices as |device| }}
-    <div class="card" style="width: 12rem">
-                <img
-                    src="images/{{device.name}}.jpeg"
-                    class="card-img-top"
-                    alt="deviceImage"
-                />
-                <div class="card-body">
-                    <h5 class="card-title"><a href="/device/{{device.id}}">{{device.name}}</a></h5>
-                    <p class="card-text">Type: {{device.device_type}}</p>
-                    <a href="/rentalAgreement/{{device.id}}" class="btn btn-primary rentBtn">Rent this</a>
-                </div>
-        </div>
-{{/each}}
+<div class="card" style="width: 12rem">
+    <img
+        src="/images/{{name}}.jpeg"
+        class="card-img-top"
+        alt="deviceImage"
+    />
+    <div class="card-body">
+        <h5 class="card-title"><a href="/device/{{id}}">{{name}}</a></h5>
+        <p class="card-text">Type: {{device_type}}</p>
+        {{#if is_available}}
+        <a href="/rentalAgreement/{{id}}" class="btn btn-primary rentBtn">Rent this</a>
+        {{else}}
+        <a href="#" class="btn btn-secondary rentBtn" disabled>Unavailable</a>
+        {{/if}}
+    </div>
+</div>
