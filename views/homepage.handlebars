@@ -1,6 +1,9 @@
 {{!-- devices section --}}
 <div class="container">
     <div class="cardContainer d-flex flex-row flex-wrap">
-        {{> device-details }}
+        {{#each devices as |device| }}
+            {{> device-details }}
+        {{/each}}
+
     </div>
 </div>

@@ -9,15 +9,7 @@
       </div>
       <div class="container">
         <div class="cardContainer d-flex flex-row flex-wrap">
-          <div class="card" style="width: 12rem">
-            <div class="card-body">
-              <h5 class="card-title">{{name}}</h5>
-              <p class="card-text">Type: {{type}}</p>
-              <ul class="card-text">Current Device:
-                <li>{{device.name}}</li>
-              </ul>
-            </div>
-          </div>
+          {{> user-details}}
         </div>
       </div>
     </div>

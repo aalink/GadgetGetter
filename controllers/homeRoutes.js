@@ -22,7 +22,10 @@ router.get('/', withAuth, async (req, res) => {
     //Jessie: If logged in, render homepage, if not, render loginsignup page, this part is done in the front end main.handlebars.
     res.render('homepage', {
       devices,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
+
     });
   } catch (err) {
     res.status(500).json(err);
@@ -67,7 +70,10 @@ router.get('/profile', withAuth, async (req, res) => {
   
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
+      isProfile: true,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -115,9 +121,9 @@ router.get('/rentalAgreement/:id', withAuth, (req, res) => {
   res.render('rentalAgreement',{user_id: req.session.user_id});
 })
 //note: this route is not working so far
-// router.get('/finalpage', withAuth, (req, res) => {
-//   res.render('finalpage');
-// })
+router.get('/finalpage', withAuth, (req, res) => {
+  res.render('finalpage');
+})
 
 router.get("/devices", withAuth, async (req, res) => {
   // find all devices
@@ -138,7 +144,9 @@ router.get("/devices", withAuth, async (req, res) => {
     
     res.render('devices', {
       devices,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -160,7 +168,9 @@ router.get('/device/:id', withAuth, async (req, res) => {
     console.log(device);
     res.render('device', {
       device,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -179,7 +189,9 @@ router.get('/devices/is_available', withAuth, async (req, res) => {
 
     res.render('devices', {
       devices, 
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -198,7 +210,9 @@ router.get('/devices/smartphone', withAuth, async (req, res) => {
 
     res.render('devices', {
       devices, 
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -217,7 +231,9 @@ router.get('/devices/tablet', withAuth, async (req, res) => {
 
     res.render('devices', {
       devices, 
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -236,7 +252,9 @@ router.get('/devices/computer', withAuth, async (req, res) => {
 
     res.render('devices', {
       devices, 
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -255,7 +273,9 @@ router.get('/devices/media_player', withAuth, async (req, res) => {
 
     res.render('devices', {
       devices, 
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -273,7 +293,9 @@ router.get('/devices/ebook_reader', withAuth, async (req, res) => {
 
     res.render('devices', {
       devices, 
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -290,7 +312,9 @@ router.get('/users', withAuth, async (req, res) => {
     console.log(users);
     res.render('users', {
       users,
-      logged_in: true
+      logged_in: true,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -312,10 +336,12 @@ router.get('/users/admins', withAuth, async (req, res) => {
     });
 
     const users = userData.map((user) => user.get({ plain: true }));
-
+console.log(req.session.isAdmin)
     res.render('users', {
       users,
-      logged_in: true
+      logged_in: true,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -340,7 +366,9 @@ router.get('/users/teachers', withAuth, async (req, res) => {
 
     res.render('users', {
       users,
-      logged_in: true
+      logged_in: true,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
@@ -365,7 +393,9 @@ router.get('/users/students', withAuth, async (req, res) => {
 
     res.render('users', {
       users,
-      logged_in: true
+      logged_in: true,
+      isAdmin: req.session.isAdmin,
+      isTeacher: req.session.isTeacher
     });
   } catch (err) {
     res.status(500).json(err);
