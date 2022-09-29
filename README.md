@@ -16,7 +16,7 @@ The motivation for development is to make it easy for public school users (admin
 
 
 
-Repository link can be found here: https://github.com/aalink/GadgetGetter
+Repository link can be found here: https://github.com/James-Y-Wong/GadgetGetter
 
 Deployed Heroku link can be found here: https://gadget-getter.herokuapp.com/
 
